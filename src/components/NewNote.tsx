@@ -12,23 +12,25 @@ interface INewNote {
 
 const NewNote: React.FC<INewNote> = ({
   createNote,
-  textik = { text: "" },
+  textik = { id: "", text: "", date: "" },
   changeCurrent,
   changeNotes,
 }) => {
-  const [text, setText] = useState<string>(textik.text);
+  const [note, setNote] = useState<INote>(textik);
   const [remainsLetters, setRemainsLetters] = useState<number>(200);
   const textAreaRefik = useRef<HTMLTextAreaElement>(null);
 
-  const date = new Intl.DateTimeFormat().format(new Date());
+  // const date = new Intl.DateTimeFormat().format(new Date());
+  const currentDate = new Date();
+  const date = currentDate.toLocaleString();
 
   const typeText = (e: ChangeEvent<HTMLTextAreaElement>): void => {
     const value = e.target.value;
     if (
-      (value.length < text.length || remainsLetters > 0) &&
+      (value.length < note.text.length || remainsLetters > 0) &&
       value.length <= 200
     ) {
-      setText(value);
+      setNote({ ...note, text: value });
     }
   };
 
@@ -40,21 +42,21 @@ const NewNote: React.FC<INewNote> = ({
     textAreaRefik?.current?.focus();
   }, []);
   useEffect(() => {
-    setRemainsLetters(200 - text.length);
-  }, [text]);
+    setRemainsLetters(200 - note.text.length);
+  }, [note.text]);
 
   const createNewNote = (): void => {
     const newNote: INote = {
-      id: textik.id || nanoid(),
-      text: text,
+      id: note.id || nanoid(),
+      text: note.text,
       date: date.toLocaleString(),
     };
     if (createNote) createNote(newNote);
     if (changeCurrent && changeNotes) {
-      changeCurrent(text);
+      changeCurrent(note.text);
       changeNotes(newNote);
     }
-    setText("");
+    setNote({ ...note, text: "" });
   };
 
   return (
@@ -63,7 +65,7 @@ const NewNote: React.FC<INewNote> = ({
         ref={textAreaRefik}
         className="newItem"
         placeholder="Введите заметку..."
-        value={text}
+        value={note.text}
         onChange={typeText}
         onBlur={createNewNote}
       ></textarea>

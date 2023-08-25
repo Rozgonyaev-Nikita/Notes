@@ -1,9 +1,14 @@
-/* #root {
-  max-width: 1280px;
-  margin: 0 auto;
+#root {
+  width: 100%;
+  /* margin: 0 auto;
   padding: 2rem;
-  text-align: center;
-} */
+  text-align: center; */
+}
+hr {
+  width: 100%;
+
+  margin-top: 0px;
+}
 
 textarea {
   width: 100%;
@@ -11,14 +16,17 @@ textarea {
   padding: 5px;
   border-radius: 10px;
   background-color: #fa874e;
+  box-sizing: border-box;
   resize: none;
 }
-
+.activeButton {
+  background-color: inherit;
+  width: 30px;
+  height: 30px;
+  padding: 5px;
+  border-radius: 20px;
+}
 .newItem {
-  font-size: 14px;
-  height: 200px;
-  width: 350px;
-  border-radius: 10px;
   background-color: #adb5de;
 }
 
@@ -26,14 +34,19 @@ textarea {
   position: relative;
   height: 200px;
   width: 350px;
+  justify-self: center;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px;
 }
 
 .containerList {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 20px;
+  width: auto;
 
   margin: 10px 50px 10px 50px;
+  padding: 10px;
 }
 
 .saveButton {
@@ -42,7 +55,8 @@ textarea {
 }
 .activeCard {
   position: absolute;
-  bottom: 10px;
+  bottom: 6px;
+  right: 0px;
   width: 100%;
   height: 30px;
 
@@ -56,9 +70,36 @@ textarea {
   font-size: 12px;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1400px) {
+  .containerList {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+@media (max-width: 1175px) {
+  .containerList {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .container {
+    height: 175px;
+    width: 300px;
+  }
+}
+@media (max-width: 1000px) {
+  .containerList {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .container {
+    height: 150px;
+    width: 250px;
+  }
+}
+@media (max-width: 860px) {
   .containerList {
     grid-template-columns: 1fr 1fr;
+  }
+  .container {
+    height: 200px;
+    width: 350px;
   }
 }
 @media (max-width: 800px) {
@@ -66,6 +107,63 @@ textarea {
     grid-template-columns: 1fr 1fr;
   }
   .container {
+    height: 175px;
+    width: 300px;
+  }
+}
+@media (max-width: 700px) {
+  .containerList {
+    grid-template-columns: 1fr 1fr;
+  }
+  .container {
+    height: 145px;
     width: 250px;
+  }
+}
+@media (max-width: 600px) {
+  .containerList {
+    grid-template-columns: 1fr 1fr;
+  }
+  .container {
+    height: 250px;
+    width: 200px;
+  }
+}
+@media (max-width: 500px) {
+  .containerList {
+    grid-template-columns: 400px;
+  }
+  .container {
+    height: 250px;
+    width: 250px;
+    margin: 0px auto;
+  }
+  .containerList {
+    width: auto;
+    grid-template-columns: 1fr;
+    gap: 20px;
+
+    margin: 10px 0 10px 0;
+  }
+}
+@media (max-width: 320px) {
+  #root {
+    width: 90%;
+  }
+  .containerList {
+    width: 250px;
+    grid-template-columns: 250px;
+  }
+  .container {
+    height: 250px;
+    width: 200px;
+    margin: 0px auto;
+  }
+  .containerList {
+    width: auto;
+    grid-template-columns: 1fr;
+    gap: 20px;
+
+    margin: 5px 0 10px 0;
   }
 }

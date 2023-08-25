@@ -20,6 +20,10 @@ function App() {
       console.log("cazan", notes);
     }
   };
+  const deleteNote = (id: string) => {
+    const remainingNotes = [...notes].filter((item) => item.id !== id);
+    setNotes(remainingNotes);
+  };
 
   const filterNotes = useMemo(() => {
     let filterNot = [...notes];
@@ -39,10 +43,12 @@ function App() {
         searchValue={searchValue}
         setSearchValue={setSearchValue}
       ></SearchInput>
+      <hr />
       <NotesList
         notes={filterNotes}
         changeNotes={changeNotes}
         createNote={createNote}
+        deleteNote={deleteNote}
       />
     </>
   );

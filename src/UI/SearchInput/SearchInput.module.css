@@ -1,7 +1,13 @@
+.fatherSerch {
+  width: 100%;
+  padding: 10px 0 10px 10px;
+  background-color: #dcdcdc;
+}
 .searchDiv {
   position: relative;
-  width: 500px;
-  margin: 10px 0 10px 10px;
+  /* min-width: 500px; */
+  width: 90%;
+  /* margin: 10px 0 0 10px; */
 }
 .searchInput {
   width: 100%;
@@ -17,4 +23,11 @@
 .searchIcon:hover {
   color: red;
   scale: 1.2;
+}
+
+@media (max-width: 600px) {
+  .searchDiv {
+    position: relative;
+    margin: 10px 0 10px 10px;
+  }
 }

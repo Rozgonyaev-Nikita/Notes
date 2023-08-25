@@ -16,13 +16,15 @@ const SearchInput: React.FC<ISearchInput> = ({
   setSearchValue,
 }) => {
   return (
-    <div className={classes.searchDiv}>
-      <input
-        className={classes.searchInput}
-        value={searchValue}
-        onChange={(e) => setSearchValue(e.target.value)}
-      />
-      <AiOutlineFileSearch className={classes.searchIcon} />
+    <div className={classes.fatherSerch}>
+      <div className={classes.searchDiv}>
+        <input
+          className={classes.searchInput}
+          value={searchValue}
+          onChange={(e) => setSearchValue(e.target.value)}
+        />
+        <AiOutlineFileSearch className={classes.searchIcon} />
+      </div>
     </div>
   );
 };
